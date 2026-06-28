@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  openakita:
+    build: .
+    container_name: openakita
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env
+    restart: unless-stopped
+    command: python -m openakita web
