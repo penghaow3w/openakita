@@ -1,19 +1,164 @@
-# OpenAkita - 自我进化 AI 助手框架
+# OpenAkita
 
-<div align="right">
+<div align="center">
+
+**自我进化 AI 助手框架 · Self-Evolving AI Assistant Framework**
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue)](https://python.org)
 [![License MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)](Dockerfile)
-</div>
 
-**OpenAkita** 是一个开源的自我进化 AI 助手框架，融合了 **RAG（知识检索）** 和 **RL（强化学习）** 两大核心技术，让 AI 不仅会回答问题，还能从每次交互中学习、进化、自我修复。
+[English](#english) | [中文](#chinese)
+
+</div>
 
 ---
 
-## 这个代码有什么用？用在哪里？
+<h2 id="english">English</h2>
 
-### 核心能力
+OpenAkita is an **open-source self-evolving AI assistant framework** that combines **RAG (Retrieval-Augmented Generation)** and **RL (Reinforcement Learning)** to create AI that not only answers questions but learns, evolves, and self-heals from every interaction.
+
+### What's This For? Where to Use?
+
+#### Core Capabilities
+
+| Capability | Description |
+|------------|-------------|
+| Self-Evolution | AI remembers past conversations, learns from feedback, auto-fixes errors, gets smarter over time |
+| 8 Personalities | One-click switch between Assistant, Butler, Jarvis Engineer, Teacher, Counselor, etc. |
+| Knowledge Base (RAG) | Upload documents/knowledge, AI retrieves and answers based on your private data |
+| Self-Optimization (RL) | Auto-adjusts response strategy based on user ratings; low scores trigger improvement |
+| Skill Learning | AI learns new skills (search, translate, calculate, etc.), persists across restarts |
+| Multi-Platform | Simultaneous integration with Web, Discord, Slack, Telegram, WeChat, WhatsApp |
+
+#### Use Cases
+
+**1. Personal Assistant**
+- Private knowledge management: import personal docs into the knowledge base
+- Schedule management: switch to "Butler" personality
+- Learning companion: switch to "Teacher" personality
+
+**2. Tech Teams**
+- Jarvis Engineer mode: code review, architecture design, DevOps
+- Team knowledge base: centralized technical documentation with AI-powered search
+- Automated learning: AI auto-learns team commands and workflows
+
+**3. Customer Service**
+- Integrate with Slack/Discord/Telegram for 24/7 auto-response
+- Learns from history, gets more accurate over time
+- Low-rated responses auto-trigger improvement analysis
+
+**4. Education**
+- Personalized teaching assistant that remembers each student's progress
+- Teacher personality for patient Q&A
+- Import textbooks and lecture notes as knowledge base
+
+**5. Creative Writing**
+- Writer personality for copywriting, storytelling, content creation
+- Remembers your style preferences, writes better over time
+
+### Quick Start
+
+#### Option 1: 3-Minute Deploy (Recommended)
+
+```bash
+git clone https://github.com/penghaow3w/openakita.git
+cd openakita
+pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with your OPENAKITA_API_KEY
+python -m openakita web
+```
+
+Open **http://localhost:8080** in your browser.
+
+#### Option 2: Docker
+
+```bash
+docker-compose up -d
+```
+
+#### Option 3: CLI Mode (No API Key Needed)
+
+```bash
+python -m openakita chat
+```
+
+### Architecture
+
+```
+openakita/
+├── core/                    # Core systems
+│   ├── agent.py            # Self-evolving AI Agent
+│   ├── memory.py           # Persistent memory (SQLite)
+│   ├── personality.py      # 8 personality definitions
+│   └── skills.py           # Skill registry & execution
+│
+├── rag/                     # RAG knowledge retrieval
+│   └── retriever.py        # Knowledge base + RAG engine
+│
+├── rl/                      # RL self-optimization
+│   └── optimizer.py        # Feedback collection + policy optimization
+│
+├── learning/                # Autonomous learning
+│   └── auto_improve.py     # Skill learning + error fixing
+│
+├── integrations/            # Platform integrations
+│   └── platforms.py        # Web / Discord / Slack / Telegram / WeChat / WhatsApp
+│
+├── config.py               # Global configuration
+└── main.py                 # Entry point
+```
+
+#### Personalities
+
+| Name | Label | Use Case |
+|------|-------|----------|
+| `assistant` | General Assistant | Daily Q&A, task processing |
+| `butler` | Smart Butler | Schedule management, lifestyle |
+| `jarvis` | Jarvis Engineer | Tech development, system architecture |
+| `teacher` | Knowledge Mentor | Teaching, tutoring |
+| `counselor` | Soul Companion | Emotional support, listening |
+| `writer` | Writing Master | Copywriting, stories, content |
+| `analyst` | Data Analyst | Data processing, visualization |
+| `sage` | Wise Sage | Deep thinking, strategic planning |
+
+### CLI Commands
+
+| Command | Description |
+|---------|-------------|
+| `/help` | Show help |
+| `/quit` | Exit |
+| `/personality` | List all personalities |
+| `/set <name>` | Switch personality, e.g. `/set jarvis` |
+| `/status` | View AI status |
+| `/stats` | View detailed statistics |
+| `/skills` | List all skills |
+| `/learn <name>` | Interactive skill learning |
+| `/forget` | Forget old memories |
+| `/feedback <0-10>` | Rate last response |
+
+### Tech Stack
+
+- **Python 3.9+** - Core language
+- **SQLite** - Persistent storage (memory, knowledge, feedback)
+- **Flask** - Web UI
+- **OpenAI API / Anthropic / Ollama** - LLM providers
+- **Docker** - Containerized deployment
+
+### License
+
+MIT License
+
+---
+
+<h2 id="chinese">中文</h2>
+
+**OpenAkita** 是一个开源的**自我进化 AI 助手框架**，融合了 **RAG（知识检索）** 和 **RL（强化学习）** 两大核心技术，让 AI 不仅会回答问题，还能从每次交互中学习、进化、自我修复。
+
+### 这个代码有什么用？用在哪里？
+
+#### 核心能力
 
 | 能力 | 说明 |
 |------|------|
@@ -24,7 +169,7 @@
 | 技能学习 | AI 可以学会新技能（搜索、翻译、计算等），且重启后不丢失 |
 | 多平台支持 | 同时接入 Web、Discord、Slack、Telegram、企业微信、WhatsApp |
 
-### 适用场景
+#### 适用场景
 
 **1. 个人助手**
 - 私人知识管理：把个人文档、笔记导入知识库，AI 帮你检索和问答
@@ -50,47 +195,36 @@
 - 写作大师人格，辅助文案创作、故事编写
 - 记录用户风格偏好，越写越符合需求
 
----
+### 快速开始
 
-## 快速开始
-
-### 方式一：3 分钟部署 (推荐)
+#### 方式一：3 分钟部署 (推荐)
 
 ```bash
-# 1. 克隆
-git clone https://github.com/your/openakita.git
+git clone https://github.com/penghaow3w/openakita.git
 cd openakita
-
-# 2. 安装
 pip install -r requirements.txt
-
-# 3. 配置 API Key
 cp .env.example .env
 # 编辑 .env 填入你的 OPENAKITA_API_KEY
-
-# 4. 启动
 python -m openakita web
 ```
 
 打开浏览器访问 **http://localhost:8080**，即可开始对话。
 
-### 方式二：Docker 部署
+#### 方式二：Docker 部署
 
 ```bash
 docker-compose up -d
 ```
 
-### 方式三：CLI 模式 (无需 API Key 也可体验)
+#### 方式三：CLI 模式 (无需 API Key 也可体验)
 
 ```bash
 python -m openakita chat
 ```
 
----
+### 配置指南
 
-## 配置指南
-
-### 环境变量
+#### 环境变量
 
 所有配置通过 `.env` 文件或环境变量设置：
 
@@ -103,7 +237,7 @@ python -m openakita chat
 | `OPENAKITA_DB_PATH` | `./data/openakita.db` | 数据库路径 |
 | `OPENAKITA_PLATFORMS` | `web` | 启用平台：web/discord/slack/telegram/wechat/whatsapp |
 
-### 支持的人格
+#### 支持的人格
 
 | 人格 | 标签 | 适用场景 |
 |------|------|----------|
@@ -118,9 +252,7 @@ python -m openakita chat
 
 运行时切换：输入 `/set jarvis` 或通过 Web 界面下拉菜单切换。
 
----
-
-## 架构设计
+### 架构设计
 
 ```
 openakita/
@@ -146,7 +278,7 @@ openakita/
 └── main.py                 # 主程序入口
 ```
 
-### 核心工作流程
+#### 核心工作流程
 
 ```
 用户输入
@@ -182,9 +314,7 @@ openakita/
 用户输出
 ```
 
----
-
-## 命令行使用
+### 命令行使用
 
 ```bash
 # CLI 交互模式
@@ -203,7 +333,7 @@ python -m openakita personalities
 python -m openakita learn
 ```
 
-### CLI 内置命令
+#### CLI 内置命令
 
 | 命令 | 说明 |
 |------|------|
@@ -218,11 +348,9 @@ python -m openakita learn
 | `/forget` | 遗忘旧记忆 |
 | `/feedback <0-10>` | 对上一条回复评分 |
 
----
+### 代码用途详解
 
-## 代码实际用途详解
-
-### 1. 持久化记忆系统 (`core/memory.py`)
+#### 1. 持久化记忆系统 (`core/memory.py`)
 
 AI 关掉聊天后不会忘记你。所有重要信息存入 SQLite：
 - 你的名字、偏好、习惯
@@ -239,7 +367,7 @@ AI: 好的，我记住了，以后我会给你简洁的回答。
 AI: 我记得你喜欢简洁的回答风格。
 ```
 
-### 2. RAG 知识检索 (`rag/retriever.py`)
+#### 2. RAG 知识检索 (`rag/retriever.py`)
 
 让 AI 基于你的私有知识回答问题，而不是"凭空编造"：
 
@@ -256,14 +384,14 @@ agent.add_knowledge(
 AI: (自动检索知识库后回答) OpenAkita 采用模块化架构...
 ```
 
-### 3. RL 自我优化 (`rl/optimizer.py`)
+#### 3. RL 自我优化 (`rl/optimizer.py`)
 
 AI 根据你的反馈自动调整：
 - 如果回答太啰嗦，给它低分，下次它会更简洁
 - 如果回答不够专业，给它低分，下次会更严谨
 - 长期跟踪各分类表现，持续改进
 
-### 4. 技能学习 (`learning/auto_improve.py`)
+#### 4. 技能学习 (`learning/auto_improve.py`)
 
 AI 可以动态学习新技能，无需重启：
 
@@ -279,7 +407,7 @@ def handler(city: str = "") -> str:
 )
 ```
 
-### 5. 多平台集成 (`integrations/platforms.py`)
+#### 5. 多平台集成 (`integrations/platforms.py`)
 
 同一套 AI 核心，接入不同平台共享记忆：
 
@@ -292,11 +420,7 @@ from openakita.integrations.platforms import DiscordIntegration
 discord_bot = DiscordIntegration(agent, token="your-token")
 ```
 
----
-
-## 示例场景
-
-### 场景：搭建一个团队技术助手
+### 示例场景：搭建团队技术助手
 
 ```bash
 # 1. 启动 Jarvis 人格
@@ -323,9 +447,7 @@ agent.add_knowledge("部署流程", "生产环境使用 Docker Compose...", tags
 # AI 会基于知识库 + 记忆 + 持续学习来回答
 ```
 
----
-
-## 项目结构
+### 项目结构
 
 ```
 openakita/
@@ -357,9 +479,7 @@ openakita/
 └── README.md               # 本文件
 ```
 
----
-
-## 技术栈
+### 技术栈
 
 - **Python 3.9+** - 核心语言
 - **SQLite** - 持久化存储 (记忆、知识库、反馈)
@@ -369,10 +489,14 @@ openakita/
 
 ---
 
-## License
+## License / 许可证
 
 MIT License
 
 ---
 
-> OpenAkita — 让你的 AI 越用越聪明
+<div align="center">
+
+> OpenAkita — 让你的 AI 越用越聪明 · Make Your AI Smarter Every Day
+
+</div>
